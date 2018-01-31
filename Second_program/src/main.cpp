@@ -1,4 +1,5 @@
 #include <mbed.h>
+#include <Robot>
 
 DigitalOut ledOut(LED2);
 DigitalIn button(BUTTON1);

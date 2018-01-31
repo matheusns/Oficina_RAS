@@ -6,7 +6,6 @@
 
 namespace ras 
 {
-
 enum Direction
 {
     FRONT,
@@ -19,24 +18,24 @@ class Robot
 {
   public:
   
-    Robot(PinName front_sensor_pin_, PinName right_sensor_pin_, PinName left_sensor_pin_);
-    ~Robot();
+    explicit Robot(PinName front_sensor_pin_, PinName right_sensor_pin_, PinName left_sensor_pin_);
+    virtual ~Robot();
     
     void setRightMotorPin(PinName control1, PinName pwm, PinName control2);
     void setLeftMotorPin(PinName control1, PinName pwm, PinName control2);
 
-    void setLimiar(float limiar);
+    void setSensorsLimiar(const float limiar);
 
     Direction move();
 
     void moveFront();
-    void moveLeft();
+    void moveLeft() ;
     void moveRight();
-    void moveBack();
+    void moveBack() ;
 
   private:
 
-    Motor  right_motor, left_motor;
+    Motor  *right_motor_, *left_motor_;
     Serial serial_monitor_;   
     AnalogIn front_sensor_, left_sensor_, right_sensor_;   
     float limiar_;
